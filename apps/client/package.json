@@ -1,0 +1,21 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "elm-watch make --optimize",
+    "dev": "elm-watch hot",
+    "format": "elm-format . --yes",
+    "lint": "elm-review .",
+    "lint:fix": "elm-review . --fix-all",
+    "start": "elm-watch make --optimize"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "elm-format": "^0.8.5",
+    "elm-review": "^2.7.6",
+    "elm-watch": "^1.0.2"
+  }
+}
