@@ -2,6 +2,7 @@
   "name": "client",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "build": "elm-watch make --optimize",
     "dev": "elm-watch hot",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "elm-format": "^0.8.5",
     "elm-review": "^2.7.6",
-    "elm-watch": "^1.0.2"
+    "elm-watch": "^1.0.2",
+    "uglify-js": "^3.17.4"
   }
 }
