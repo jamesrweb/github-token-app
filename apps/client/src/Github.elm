@@ -1,6 +1,7 @@
 module Github exposing (GithubUser(..), getGithubUser)
 
 import Http
+import HttpBuilder exposing (get, request, withExpect)
 import Json.Decode as Decode exposing (Decoder)
 import RemoteData exposing (RemoteData)
 import Url exposing (Url)
@@ -18,10 +19,14 @@ type GithubUser
 
 getGithubUser : (RemoteData Http.Error GithubUser -> msg) -> Cmd msg
 getGithubUser message =
-    Http.get
-        { url = "/auth"
-        , expect = Http.expectJson (RemoteData.fromResult >> message) decodeGithubUser
-        }
+    let
+        gotGithubUserMessage : Result Http.Error GithubUser -> msg
+        gotGithubUserMessage =
+            RemoteData.fromResult >> message
+    in
+    get "/auth"
+        |> withExpect (Http.expectJson gotGithubUserMessage decodeGithubUser)
+        |> request
 
 
 decodeGithubUser : Decoder GithubUser
